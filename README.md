@@ -1,2 +1,339 @@
-# laravel-book-catalogue
-A Laravel-based book catalogue application that fetches data from the Gutendex API. Features include search, filtering by language, sorting, pagination, and a responsive UI built with Bootstrap 5.
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
+
+## About Laravel
+
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+
+-   [Simple, fast routing engine](https://laravel.com/docs/routing).
+-   [Powerful dependency injection container](https://laravel.com/docs/container).
+-   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+-   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+-   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+-   [Robust background job processing](https://laravel.com/docs/queues).
+-   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
+
+## Learning Laravel
+
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+
+## Laravel Sponsors
+
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+
+### Premium Partners
+
+-   **[Vehikl](https://vehikl.com/)**
+-   **[Tighten Co.](https://tighten.co)**
+-   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+-   **[64 Robots](https://64robots.com)**
+-   **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+-   **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+-   **[Redberry](https://redberry.international/laravel-development/)**
+-   **[Active Logic](https://activelogic.com)**
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# Laravel Book Catalogue
+
+This is a basic book catalogue project built with Laravel. It fetches book data from the [Gutendex API](https://gutendex.com/) and displays it on the `/books` URL. The project demonstrates the use of Laravel's Blade templating, controller logic, and separation of API client logic into a dedicated file.
+
+---
+
+## Features
+
+-   Fetches book data from the Gutendex API.
+-   Displays books with details like title, author, language, subjects, and summaries.
+-   Allows filtering by language, sorting (ascending, descending, popular), and searching by title.
+-   Pagination for navigating through the book list.
+-   Responsive UI built with Bootstrap 5.
+-   Demonstrates Laravel best practices:
+    -   Blade templating.
+    -   Separation of concerns by moving API logic to a dedicated client file.
+    -   Clean controller logic.
+
+---
+
+## Installation
+
+Follow these steps to set up the project locally:
+
+### Prerequisites
+
+-   PHP >= 8.1
+-   Composer
+-   Laravel >= 10.x
+-   A web server (e.g., Apache, Nginx, or Laravel's built-in server)
+-   Node.js and npm (optional, for frontend asset compilation)
+
+### Steps
+
+1. **Clone the Repository**:
+
+    ```bash
+    git clone https://github.com/gayali/laravel-book-catalogue.git
+    cd laravel-book-catalogue
+    ```
+
+2. **Install Dependencies**: Run the following command to install PHP dependencies:
+
+    ```bash
+    composer install
+    ```
+
+3. **Set Up Environment**: Copy the .env.example file to .env:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+    Update the .env file with your application settings (e.g., database connection, app URL).
+
+4. **Generate Application Key**:
+
+    ```bash
+    php artisan key:generate
+    ```
+
+5. **Run the Application**: Start the Laravel development server:
+
+    ```bash
+    php artisan serve
+    ```
+
+    The application will be available at http://127.0.0.1:8000
+
+---
+
+## Usage
+
+### Accessing the Application
+
+-   Navigate to `/books` to view the book catalogue.
+-   Example URL: `http://127.0.0.1:8000/books`.
+
+### Features
+
+1. **Search**:
+
+    - Use the search bar to find books by title.
+
+2. **Filter by Language**:
+
+    - Click the "Filters" button to open the left panel.
+    - Select one or more languages (e.g., English, French) and click "Apply Filter".
+
+3. **Sort**:
+
+    - Use the "Sort By" dropdown to sort books by:
+        - Ascending
+        - Descending
+        - Popular
+
+4. **Pagination**:
+
+    - Use the "Previous Page" and "Next Page" buttons to navigate through the book list.
+
+5. **View Details**:
+    - Click the "View Details" button on any book card to open a modal with detailed information about the book.
+
+---
+
+## Project Structure
+
+### Routes
+
+The routes are defined in `routes/web.php`:
+
+```php
+Route::get('/', function () {
+    return redirect()->route('books.index');
+});
+
+Route::get('/books', [BookController::class, 'index'])->name('books.index');
+```
+
+---
+
+### Controllers
+
+The main logic is handled in `BookController.php`:
+
+```php
+// filepath: app/Http/Controllers/BookController.php
+public function index(Request $request)
+{
+    $validated = $request->validate([
+        'search' => 'nullable|string|max:255',
+        'page' => 'nullable|string|min:1',
+        'languages' => 'nullable|array',
+        'languages.*' => 'string|size:2|regex:/^[a-z]{2}$/',
+        'sort' => 'nullable|string|in:ascending,descending,popular',
+    ]);
+
+    try {
+        if (isset($validated['languages']) && is_array($validated['languages'])) {
+            $validated['languages'] = implode(',', $validated['languages']);
+        }
+
+        $books = (new BookClient)->fetchBooks($validated);
+
+        if (!$books) {
+            Log::error('Error fetching books: Books not found');
+            return response(['error' => 'Books not found'], 404);
+        }
+
+        return view('books.index', compact('books'));
+    } catch (Exception $e) {
+        Log::error($e);
+        return response(['error' => 'Something went wrong, please try again later'], 500);
+    }
+}
+```
+
+---
+
+### API Client
+
+The API logic is separated into `BookClient.php`:
+
+```php
+// filepath: app/Clients/BookClient.php
+namespace App\Clients;
+
+use Illuminate\Support\Facades\Http;
+
+class BookClient
+{
+    const SITE_URL = 'https://gutendex.com';
+
+    public function fetchBooks($query = [])
+    {
+        $query = array_filter($query, function ($value) {
+            return !is_null($value) && $value !== '';
+        });
+
+        $response = Http::get(self::SITE_URL . '/books', $query);
+
+        if ($response->successful()) {
+            return $response->json();
+        }
+
+        return null;
+    }
+}
+```
+
+-   **Purpose**: Handles API requests to the Gutendex API.
+-   **Method**: `fetchBooks($query)` fetches books based on the query parameters.
+
+---
+
+### Blade Templates
+
+The frontend is built using Blade templates. Key files:
+
+1. **Layout**:
+
+    - `resources/views/layouts/app.blade.php`: Contains the base HTML structure and includes Bootstrap.
+
+2. **Books Index**:
+    - `resources/views/books/index.blade.php`: Displays the book catalogue with filters, sorting, and pagination.
+
+---
+
+### Frontend
+
+The UI is built with Bootstrap 5 (via CDN). Key features:
+
+1. **Navbar**:
+
+    - Displays the application title.
+
+2. **Filters**:
+
+    - A left panel (offcanvas) for filtering by language.
+
+3. **Sorting**:
+
+    - A dropdown for sorting books.
+
+4. **Pagination**:
+
+    - Buttons for navigating between pages.
+
+5. **Responsive Design**:
+    - The layout is fully responsive and works on all screen sizes.
+
+---
+
+## Example API Query
+
+The application sends requests to the Gutendex API with query parameters like:
+
+```http
+GET https://gutendex.com/books?search=frankenstein&languages=en,fr&sort=popular&page=2
+```
+
+---
+
+## Customization
+
+1. **Add More Filters**:
+
+    - Update the `BookController` and `index.blade.php` to include additional filters (e.g., subjects, authors).
+
+2. **Styling**:
+
+    - Modify `app.blade.php` to include custom CSS or use a different frontend framework.
+
+3. **Extend API Logic**:
+    - Add more methods to `BookClient.php` for fetching specific book details or other endpoints.
+
+---
+
+## Troubleshooting
+
+1. **No Books Found**:
+
+    - Ensure the Gutendex API is reachable.
+    - Check the query parameters being sent.
+
+2. **Styling Issues**:
+
+    - Ensure the Bootstrap CDN is loaded correctly.
+
+3. **Validation Errors**:
+    - Check the validation rules in `BookController.php`.
+
+---
+
+## License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
